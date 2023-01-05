@@ -1,21 +1,31 @@
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Nav from './components/Nav';
+import Services from './components/Services';
+import About from './components/About';
+import Testimonials from './components/Testimonials';
+import Footer from './components/Footer';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("About");
+
+  const handlePageChange = (page) => {
+    document.title = page;
+    setCurrentPage(page);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+        </Routes>
+      </Router>
+      <Footer />
     </div>
   );
 }
