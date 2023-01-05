@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 function Nav({ currentPage, handlePageChange }) {
     return (
         <header>
-            <nav className="navbar__container">
-                <div className="logo__container">
+                <div className="container header__container">
                     <h1>Paws & Claws</h1>
+                    <h5 className="text-light">
+                    Mobile Nail Service
+                    </h5>
                 </div>
 
-                <ul className="nav-items">
+            <nav>
+                <ul>
                 <li> 
                     <Link herf="#about" to="/" 
                           onClick={() => handlePageChange("About")} 
