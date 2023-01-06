@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 function Nav({ currentPage, handlePageChange }) {
     return (
         <header>
-                <div className="container header__container">
                     <h1>Paws & Claws</h1>
                     <h5 className="text-light">
                     Mobile Nail Service
                     </h5>
-                </div>
 
             <nav>
                 <ul>
