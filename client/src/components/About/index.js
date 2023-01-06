@@ -2,11 +2,12 @@ import React from "react";
 import dana from '../../assets/images/dana2.jpg';
 import {FaAward} from 'react-icons/fa';
 import {ImLocation} from 'react-icons/im';
+import Testimonials from "../Testimonials";
 
 function About() {
     return (
-    
-    <section class="wrapper">
+    <div>
+    <div className="wrapper__about">
           <div className="container about__container">
           <div className="about__me">
             <div className="about__me-image">
@@ -34,11 +35,15 @@ function About() {
           <p>
           Schedule a mobile nail trimming appointment today! Your pet (and your furniture) will thank you. </p>
 
-          <a href="#services" className='btn btn-primary'>Services</a>
+          <a href="#services" className='btn'>Services</a>
+          <a href="#" className='btn btn-primary'>Make an Appointment</a>
         </div>
       </div>
-    </section>
-        
+    </div>
+
+    <Testimonials />
+    
+</div>
     );
 }
 

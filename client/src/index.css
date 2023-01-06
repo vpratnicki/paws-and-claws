@@ -164,7 +164,6 @@ nav ul {
   list-style: none;
 }
 
-
 header a {
   color: var(--color-primary);
   text-decoration: none;
@@ -187,7 +186,7 @@ header a:hover {
 
 
 /* About Me Styles */
-.wrapper {
+.wrapper__about {
   width: 100%;
   background-color: var(--color-light);
   color: var(--color-bg);
@@ -198,19 +197,14 @@ header a:hover {
   margin-bottom: 5rem;
 }
 
-.wrapper h5 {
+.wrapper__about h5 {
   color: var(--color-primary-variant);
 }
-
 
 .about__container {
   display: grid;
   grid-template-columns: 35% 50%;
   gap: 15%;
-}
-
-.wrapper h2 {
-  color: var(--color-bg);
 }
 
 .about__me {
@@ -281,6 +275,39 @@ header a:hover {
     font-style: italic;
     /* font-weight: 400px; */
   }
+
+  /* Testimonial Styles */
+  .container.testimonials__container {
+    width: 40%;
+  }
+
+  .client__avatar {
+    width: 6rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 0.4rem solid var(--color-primary-variant);
+  }
+
+  .testimonial {
+    background: var(--color-bg-variant);
+    text-align: center;
+    padding: 2rem;
+    border-radius: 2rem;
+    user-select: none;
+  }
+
+  .client__review {
+    color: var(--color-light);
+    font-weight: 300;
+    display: block;
+    width: 80%;
+    margin: 0.8rem auto 0;
+  }
+
+
+  
   
   /* ================ MEDIA QUERIES (MEDIUM DEVICES) ================= */
   @media screen and (max-width: 1024px) {
@@ -296,6 +323,10 @@ header a:hover {
 
   .about__content p {
     margin: 1rem 0 1.5rem;
+  }
+
+  .container.testimonials__container {
+    width: 60%;
   }
 }
 
@@ -317,5 +348,12 @@ header a:hover {
 
   .about__content p {
     margin: 1.5rem 0;
+  }
+  .container.testimonials__container {
+    width: var(--container-width-sm);
+  }
+
+  .client__review {
+    width: var(--container-width-sm);
   }
 }
