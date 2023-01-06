@@ -25,12 +25,12 @@ function Testimonials() {
         {
         avatar: Avatar4,
         name: "Matti Jean",
-        review: ""
+        review: "I recently used Paws and Claws for a mobile dog nail clipping service and was extremely impressed with the results. The groomer was prompt, professional, and very friendly. My dog can be anxious around new people, but the groomer was able to put her at ease and make the nail clipping process stress-free. The groomer was also very thorough and did a fantastic job with the clipping. I will definitely be using Paws and Claws for all of my dog's grooming needs in the future."
         },
         {
         avatar: Avatar3,
         name: "Renae Greensfelder",
-        review: ""
+        review: "I recently discovered Paws and Claws, a mobile dog nail clipping service, and I am absolutely thrilled with the convenience and quality of their service. The groomer was punctual, professional, and so gentle with my nervous pup. She took the time to explain the process and answered all of my questions. My dog's nails were trimmed perfectly and the whole experience was stress-free for both of us. I can't recommend Paws and Claws enough – it's such a game-changer to be able to have a groomer come to my home and take care of everything. Thank you Paws and Claws!"
         }
     ];
     return (
@@ -39,41 +39,20 @@ function Testimonials() {
             <h2>Testimonials</h2>
 
             <div className="container testimonials__container">
-                <article className="testimonial">
-                    <div className="client__avatar">
-                        <img src={Avatar1} alt="client avatar one" />
-                    </div>
-                    <h5 className="client__name">The Leskos</h5>
-                    <small className="client__review">Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates.</small>
-                </article>
-                <article className="testimonial">
-                    <div className="client__avatar">
-                        <img src={Avatar1} alt="client avatar one" />
-                    </div>
-                    <h5 className="client__name">The Leskos</h5>
-                    <small className="client__review">Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates.</small>
-                </article>
-                <article className="testimonial">
-                    <div className="client__avatar">
-                        <img src={Avatar1} alt="client avatar one" />
-                    </div>
-                    <h5 className="client__name">The Leskos</h5>
-                    <small className="client__review">Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates.</small>
-                </article>
-                <article className="testimonial">
-                    <div className="client__avatar">
-                        <img src={Avatar1} alt="client avatar one" />
-                    </div>
-                    <h5 className="client__name">The Leskos</h5>
-                    <small className="client__review">Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates.</small>
-                </article>
-                <article className="testimonial">
-                    <div className="client__avatar">
-                        <img src={Avatar1} alt="client avatar one" />
-                    </div>
-                    <h5 className="client__name">The Leskos</h5>
-                    <small className="client__review">Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates.</small>
-                </article>
+                {
+                    data.map(({avatar, name, review}, index) => {
+                        return (
+                            <article key={index} className="testimonial">
+                                <div className="client__avatar">
+                                    <img src={avatar} alt={name} />
+                                </div>
+                                <h5 className="client__name">{name}</h5>
+                                <small className="client__review">{review}</small>
+                            </article>
+                        )
+                    })
+                }
+                
                 
                 
             </div>
