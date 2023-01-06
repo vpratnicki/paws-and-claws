@@ -5,12 +5,22 @@ import Avatar3 from "../../assets/images/avatar3.jpg";
 import Avatar4 from "../../assets/images/avatar4.jpg";
 import Avatar5 from "../../assets/images/avatar5.jpg";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
+
 function Testimonials() {
     const data = [
         { 
         avatar: Avatar1, 
         name: "The Leskos", 
-        review: "Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates." 
+        review: "Dana is the best! We will never get Winnie's nail clipped by anyone else. So convient and great rates. Dana is very professional and Winnie loves her." 
         },
         {
         avatar: Avatar5,
@@ -20,7 +30,7 @@ function Testimonials() {
         {
         avatar: Avatar2,
         name: "Vanessa Pratnicki",
-        review: "I absolutely hate clipping my cats nails! Evrytime I attempt to clip there nails they turn into demon cats from another reilm - even my sweet baby CHarles! Dana has been clipping my cats nails for years and I couldn't be happier. She is very professional and my cats love her. I highly recommend her."
+        review: "I absolutely hate clipping my cats nails! Evrytime I attempt to clip their nails they turn into demon cats - even my sweet baby Charles! Dana has been clipping my cats nails for years and I couldn't be happier. She is very professional and my cats LOVE her. I highly recommend her."
         },
         {
         avatar: Avatar4,
@@ -38,24 +48,21 @@ function Testimonials() {
             <h5>Reviews from clients</h5>
             <h2>Testimonials</h2>
 
-            <div className="container testimonials__container">
+            <Swiper navigation={true} modules={[Navigation]} className="mySwiper container testimonials__container">
                 {
                     data.map(({avatar, name, review}, index) => {
                         return (
-                            <article key={index} className="testimonial">
+                            <SwiperSlide key={index} className="testimonial">
                                 <div className="client__avatar">
                                     <img src={avatar} alt={name} />
                                 </div>
                                 <h5 className="client__name">{name}</h5>
                                 <small className="client__review">{review}</small>
-                            </article>
+                            </SwiperSlide>
                         )
                     })
                 }
-                
-                
-                
-            </div>
+            </Swiper>
         </section>
     );
 }

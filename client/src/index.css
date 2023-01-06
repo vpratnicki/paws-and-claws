@@ -118,10 +118,14 @@ section {
 }
 
 section > h2,
-section > h5,
 section > p {
   padding-left: 12%;
   color: var(--color-light);
+}
+
+section > h5{
+  color: var(--color-primary-variant);
+  padding-left: 12%;
 }
 
 section > h2 {
@@ -133,7 +137,6 @@ section > p {
   color: var(--color-white);
   margin-bottom: 3rem;
   margin-right: 4rem;
-
 }
 
 /* Header / Nav Styles Start */
@@ -278,7 +281,7 @@ header a:hover {
 
   /* Testimonial Styles */
   .container.testimonials__container {
-    width: 40%;
+    width: 60%;
   }
 
   .client__avatar {
@@ -296,11 +299,17 @@ header a:hover {
     padding: 2rem;
     border-radius: 2rem;
     user-select: none;
+    transition: var(--transition);
+  }
+
+  .client__name {
+    color: var(--color-primary-variant);
+    font-weight: 400px;
   }
 
   .client__review {
     color: var(--color-light);
-    font-weight: 300;
+    /* font-weight: 300; */
     display: block;
     width: 80%;
     margin: 0.8rem auto 0;
