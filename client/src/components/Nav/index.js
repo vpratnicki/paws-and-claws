@@ -24,12 +24,12 @@ function Nav({ currentPage, handlePageChange }) {
                           className={currentPage === "Projects" ? "navActive" : "nav-link"} >
                     Services</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link herf="#testimonials"
                           to="/testimonials"
                           onClick={() => handlePageChange("Testimonials")}
                           className={currentPage === "Resume" ? "navActive" : "nav-link"} >
-                Testimonials</Link></li>
+                Testimonials</Link></li> */}
                 </ul>
             </nav>
         </header>
