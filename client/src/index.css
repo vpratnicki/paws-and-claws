@@ -280,41 +280,104 @@ header a:hover {
   }
 
   /* Testimonial Styles */
-  .container.testimonials__container {
+.container.testimonials__container {
     width: 60%;
-  }
+}
 
-  .client__avatar {
+.client__avatar {
     width: 6rem;
     aspect-ratio: 1/1;
     overflow: hidden;
     border-radius: 50%;
     margin: 0 auto 1rem;
     border: 0.4rem solid var(--color-primary-variant);
-  }
+}
 
-  .testimonial {
+.testimonial {
     background: var(--color-bg-variant);
     text-align: center;
     padding: 2rem;
     border-radius: 2rem;
     user-select: none;
     transition: var(--transition);
-  }
+}
 
-  .client__name {
+.client__name {
     color: var(--color-primary-variant);
     font-weight: 400px;
-  }
+}
 
-  .client__review {
+.client__review {
     color: var(--color-light);
     /* font-weight: 300; */
     display: block;
     width: 80%;
     margin: 0.8rem auto 0;
-  }
+}
 
+/* Footer Styles */
+footer {
+  background: var(--color-primary);
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: var(--color-light);
+}
+
+.footer__logo {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.permalinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0  2rem;
+}
+
+footer ul li {
+  margin: 1rem 0;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer__socials a {
+  background: var(--color-bg);
+  color: var(--color-white);
+  padding: 0.8rem;
+  border-radius: 0.7rem;
+  display: flex;
+  border: 1px solid transparent;
+}
+
+.footer__socials a:hover {
+  background: transparent;
+  color: var(--color-bg);
+  border-color: var(--color-bg);
+}
+
+.footer__copyright {
+  color: var(--color-light);
+  margin-right: 3.5rem;
+}
 
   
   
@@ -364,5 +427,23 @@ header a:hover {
 
   .client__review {
     width: var(--container-width-sm);
+  }
+
+  .footer {
+    display: inline-block;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  
+  .permalinks {
+    margin: auto;
+  }
+
+  .footer__copyright {
+    margin: auto;    
+  } 
+  .footer__socials {
+    margin: auto;
+    margin-bottom: 0.5rem;
   }
 }
