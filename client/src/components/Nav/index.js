@@ -21,7 +21,7 @@ function Nav({ currentPage, handlePageChange }) {
                     <Link herf="#services" 
                           to="/services" 
                           onClick={() => handlePageChange("Services")} 
-                          className={currentPage === "Projects" ? "navActive" : "nav-link"} >
+                          className={currentPage === "Services" ? "navActive" : "nav-link"} >
                     Services</Link>
                 </li>
                 {/* <li>
