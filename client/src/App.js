@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Services from './components/Services';
 import About from './components/About';
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/make-an-appointment" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
       <Footer />
