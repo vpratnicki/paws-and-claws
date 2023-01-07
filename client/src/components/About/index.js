@@ -12,7 +12,7 @@ function About({ currentPage, handlePageChange }) {
           <div className="container about__container">
           <div className="about__me">
             <div className="about__me-image">
-              <img src={dana} alt="About Image" />
+              <img src={dana} alt="About" />
             </div>
           </div>
         <div className="about__content">
@@ -36,13 +36,14 @@ function About({ currentPage, handlePageChange }) {
           <p>
           Schedule a mobile nail trimming appointment today! Your pet (and your furniture) will thank you. </p>
 
-          <Link herf="#service" to="/services" 
-                          onClick={() => handlePageChange("Services")} 
-                          className="btn" >
-                     Services</Link>
-
-
-          <a href="#" className='btn btn-primary'>Make an Appointment</a>
+          <Link herf="#service" 
+                to="/services" 
+                onClick={() => handlePageChange("Services")} 
+                className="btn">Services</Link>
+          <Link href="#make-an-appointment"
+                to="/make-an-appointment"
+                onClick={() => handlePageChange("Login")} 
+                className='btn btn-primary'>Make an Appointment</Link>
         </div>
       </div>
     </div>
