@@ -106,7 +106,7 @@ function Services () {
 
       <h5>Where We Offer</h5>
       <h2>Service Areas</h2>
-      <p>We are located in the greater Orlando area. Enter you address below to see if you are within our service area.</p>
+      <p>We provide services to the Orlando area. Enter you address below to see if you are within our service area.</p>
 
      <div className="container location__container">
         <div className="location__map">

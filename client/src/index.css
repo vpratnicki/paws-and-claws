@@ -399,9 +399,16 @@ iframe {
 }
 
 form {
+  background-color: var(--color-bg-variant);
+  padding: 2rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+}
+
+form h3 {
+  padding-bottom: 1rem;
 }
 
 input {
@@ -412,6 +419,18 @@ input {
   border: 1px solid var(--color-primary-variant);
   resize: none;
   color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+/* Make an Appointment Styles */
+.login-h2 {
+  margin-top: 1.2rem;
+}
+
+.login__container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 2rem;
 }
 
 
@@ -569,5 +588,10 @@ footer ul li {
   }
   .container.location__container {
     width: var(--container-width-sm)
+  }
+
+  .login__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;  
   }
 }
