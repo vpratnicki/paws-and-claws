@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from './components/Nav';
 import Services from './components/Services';
 import About from './components/About';
-import Testimonials from './components/Testimonials';
+import Login from './components/Login';
 import Footer from './components/Footer';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<About />} />
           <Route path="/services" element={<Services />} />
-          {/* <Route path="/testimonials" element={<Testimonials />} /> */}
+          <Route path="/make-an-appointment" element={<Login />} />
         </Routes>
       </Router>
       <Footer />

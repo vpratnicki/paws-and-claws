@@ -5,11 +5,7 @@ import { Link } from "react-router-dom";
 function Nav({ currentPage, handlePageChange }) {
     return (
         <header>
-                    <h1>Paws & Claws</h1>
-                    <h5 className="text-light">
-                    Mobile Nail Service
-                    </h5>
-
+            <h1>Paws & Claws</h1>
             <nav>
                 <ul>
                 <li> 
@@ -24,12 +20,12 @@ function Nav({ currentPage, handlePageChange }) {
                           className={currentPage === "Services" ? "navActive" : "nav-link"} >
                     Services/Locations</Link>
                 </li>
-                {/* <li>
-                    <Link herf="#testimonials"
-                          to="/testimonials"
-                          onClick={() => handlePageChange("Testimonials")}
-                          className={currentPage === "Resume" ? "navActive" : "nav-link"} >
-                Testimonials</Link></li> */}
+                <li>
+                    <Link herf="#make-an-appointment"
+                          to="/make-an-appointment"
+                          onClick={() => handlePageChange("Login")}
+                          className={currentPage === "Login" ? "navActive" : "nav-link"} >
+                    Make an Appointment</Link></li>
                 </ul>
             </nav>
         </header>
