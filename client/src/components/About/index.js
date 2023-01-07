@@ -1,10 +1,11 @@
 import React from "react";
-import dana from '../../assets/images/dana2.jpg';
+import { Link } from "react-router-dom";
+import dana from '../../assets/images/dana.jpg';
 import {FaAward} from 'react-icons/fa';
 import {ImLocation} from 'react-icons/im';
 import Testimonials from "../Testimonials";
 
-function About() {
+function About({ currentPage, handlePageChange }) {
     return (
     <div>
     <div className="wrapper__about">
@@ -19,7 +20,7 @@ function About() {
             <article className='about__card'>
               <FaAward className='about__icon'/>
               <h5>Experience</h5>
-              <small>3+ Years Working</small>
+              <small>10+ Years Grooming</small>
             </article>
 
             <article className='about__card'>
@@ -35,7 +36,12 @@ function About() {
           <p>
           Schedule a mobile nail trimming appointment today! Your pet (and your furniture) will thank you. </p>
 
-          <a href="#services" className='btn'>Services</a>
+          <Link herf="#service" to="/services" 
+                          onClick={() => handlePageChange("Services")} 
+                          className="btn" >
+                     Services</Link>
+
+
           <a href="#" className='btn btn-primary'>Make an Appointment</a>
         </div>
       </div>
