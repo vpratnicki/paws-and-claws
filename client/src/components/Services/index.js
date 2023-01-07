@@ -1,7 +1,41 @@
-import React from "react";
-import {BiCheck} from 'react-icons/bi'
+import React, { useState } from "react";
+import { validateAddress } from "../../utils/helpers";
+import {BiCheck} from 'react-icons/bi';
 
 function Services () {
+    const [formState, setFormState] = useState({
+        address: "",
+        city: "",
+        zip: "",
+      });
+      const {address, city, zip } = formState;
+      const [errorMessage, setErrorMessage] = useState("");
+      
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formState);
+      };
+    
+      const handleChange = (e) => {
+        if (e.target.name === "address") {
+          const isValid = validateAddress(e.target.value);
+          if (!isValid) {
+            setErrorMessage("We are currently not offering services in your area :(");
+          } else {
+            setErrorMessage("You are in our service area!");
+          }
+        } else {
+          if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`);
+          } else {
+            setErrorMessage("");
+          }
+        }
+        if (!errorMessage) {
+          setFormState({ ...formState, [e.target.name]: e.target.value });
+        }
+      };
+    
     return (
     <section>
       <h5 className="services-h5">What We Offer</h5>
@@ -68,6 +102,59 @@ function Services () {
         </article>
           
       </div>
+      <br/>
+
+      <h5>Where We Offer</h5>
+      <h2>Service Areas</h2>
+      <p>We are located in the greater Orlando area. Enter you address below to see if you are within our service area.</p>
+
+     <div className="container location__container">
+        <div className="location__map">
+        <iframe title="location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8909900422755!2d-81.41708574909354!3d28.512927282379025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e77be8e6062883%3A0xa2d15995a8524cc6!2sGulfstream%20Rd%2C%20Orlando%2C%20FL%2032805!5e0!3m2!1sen!2sus!4v1673058415997!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <form className="form" onSubmit={handleSubmit} >
+            <div className="form-group">
+            <div>
+              <label htmlFor="address">Address:</label>
+              <input
+                type="address"
+                defaultValue={address}
+                name="address"
+                onBlur={handleChange}
+                className="my-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="city">City:</label>
+              <input
+                type="text"
+                defaultValue={city}
+                onBlur={handleChange}
+                name="city"
+                className="my-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="zip">Zip code:</label><br/>
+              <input
+                name="zip"
+                defaultValue={zip}
+                onBlur={handleChange}
+                rows="5"
+                
+              />
+            </div>
+            {errorMessage && (
+              <div>
+                <p>{errorMessage}</p>
+              </div>
+            )}
+            <button type="submit" className="btn btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+
     </section>
     );
 }
