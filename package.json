@@ -19,5 +19,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.6.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/vpratnicki/project-3/issues"
+  },
+  "homepage": "https://github.com/vpratnicki/project-3#readme"
 }

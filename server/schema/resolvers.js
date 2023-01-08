@@ -42,12 +42,22 @@ const resolvers = {
     },
     Mutation: {
         addUser: async (parent, args) => {
+            console.log(args);
+            try {
+                const user = await User.create(args)
+                console.log('----------------');
+                console.log(user);
 
-            const user = await User.create(args)
+                const token = signToken(user);
+                console.log('----------------');
+                console.log(token);
+                return { token, user};
 
-            const token = signToken(user);
-
-            return { token, user};
+            } catch (err) {
+                console.log('something failed');
+                console.log(err);
+                return err;
+            }
         },
         login: async(parent, { email, password }) => {
             const user = await User.findOne({ email });
@@ -83,25 +93,6 @@ const resolvers = {
         
               throw new AuthenticationError('You need to be logged in!');
             },
-        addAppointment: async (parent, args, context)=> {
-            if(context.user){
-                
-                const userId = await User.findOne({id: _context.user._id})
-                const petId = await Pet.findOne({id: context.user._id})
-
-                const appt = await Appointment.create({ ...args, client: context.user._id });
-
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id},
-                    { $push: { appointments: appt._id}},
-                    {new: true}
-                );
-
-                return appt;
-            }
-
-            throw new AuthenticationError('You need to be logged in!');
-        }
         
         // addUser: async (parent, args) => {
             

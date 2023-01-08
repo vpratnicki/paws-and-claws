@@ -429,10 +429,28 @@ input {
 
 .login__container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 1fr;;
   gap: 2rem;
 }
 
+/* Calendar Styles */
+.md-calendar-booking .mbsc-calendar-text {
+  text-align: right;
+}
+
+.md-calendar-booking .booking-datetime .mbsc-datepicker-tab-calendar {
+  flex: 1 1 0;
+  min-width: 200px;
+}
+
+.md-calendar-booking .mbsc-timegrid-item {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.md-calendar-booking .mbsc-timegrid-container {
+  top: 30px;
+}
 
 /* Footer Styles */
 footer {

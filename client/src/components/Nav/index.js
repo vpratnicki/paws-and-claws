@@ -26,6 +26,13 @@ function Nav({ currentPage, handlePageChange }) {
                           onClick={() => handlePageChange("Login")}
                           className={currentPage === "Login" ? "navActive" : "nav-link"} >
                     Make an Appointment</Link></li>
+                
+                <li>
+                    <Link herf="#dashboard"
+                          to="/dashboard"
+                          onClick={() => handlePageChange("Dashboard")}
+                          className={currentPage === "Dashboard" ? "navActive" : "nav-link"} >
+                    Dashboard</Link></li>
                 </ul>
             </nav>
         </header>
