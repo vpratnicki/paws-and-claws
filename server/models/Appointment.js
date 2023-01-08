@@ -4,13 +4,13 @@ const AppointmentSchema = new Schema({
     apptDate: {
         type: Date
     },
-    // clientName: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    // },
-    // petName: {
-    //     type: Schema.Types.ObjectId,
-    // }
+    client: {
+        type: String
+    },
+    service: {
+        type: String
+    }
+    
 })
 
 

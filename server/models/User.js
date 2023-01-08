@@ -7,7 +7,6 @@ const userSchema = new Schema(
         clientName: {
             type: String,
             required: true,
-            trim: true
         },
         username: {
             type: String,
@@ -58,7 +57,11 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'Pet'
             }
-        ]
+        ],
+        appointments: {
+            type: Schema.Types.ObjectId,
+            ref: 'Appointment'
+        }
     },
 );
 

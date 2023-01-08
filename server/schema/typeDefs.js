@@ -1,5 +1,4 @@
 const { gql } = require('apollo-server-express');
-const { typeDefs: scalarTypeDefs } = require('graphql-scalars');
 
 
 const typeDefs = gql`
@@ -23,6 +22,14 @@ type User {
     pets: [Pet]
 }
 
+type Appointment {
+    _id: ID
+    apptDate: Int
+    client: User
+    pet: Pet
+    service: String
+}
+
 type Auth {
     token: ID!
     user: User
@@ -30,6 +37,7 @@ type Auth {
 type Query {
    me: User 
    getUsers: [User]
+   getAppointments: [Appointment]
    getUserByID(_id: ID!): User
    getUserByName(clientName: String!): User
 
@@ -39,11 +47,11 @@ type Query {
 }
 
 type Mutation {
-
+    addAppointment(apptDate: Int!, service: String!, pet: ID!): Appointment
     addUser(username: String!, email: String!, clientName: String!, password: String! homeAddress: String!, zipcode: Int!): Auth
     login(email: String!, password: String!): Auth
-
     addPet(petName: String!, petType: String!, petAge: Int): Pet
+
 }
 
 `;
