@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 
 function Login() {
 const [formState, setFormState] = useState({
@@ -29,7 +29,7 @@ const handleChange = (event) => {
         variables: { ...formState },
       });
 
-      console.login(data);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
@@ -76,7 +76,6 @@ const handleChange = (event) => {
         </form>
         {error && <div>Login failed</div>}
 
-        <Login />
 
         </div>
     </section>
