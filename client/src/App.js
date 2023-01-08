@@ -4,12 +4,12 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import Nav from './components/Nav';
 import Services from './components/Services';
 import About from './components/About';
-import Login from './components/Login';
+import Login from './components/Signup';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'graphql',
 });
 
 const client = new ApolloClient({
