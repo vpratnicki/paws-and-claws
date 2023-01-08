@@ -1,85 +1,86 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 // import Auth from "../../utils/auth";
 
 function Login() {
 const [formState, setFormState] = useState({
-    email: "", 
+    email: "",
     password: "",
- });
+    });
+const [login, { error }] = useMutation(LOGIN_USER);
 
- const [addUser, { error }] = useMutation(ADD_USER);
+// update state based on form input changes
+const handleChange = (event) => {
+    const { name, value } = event.target;
 
- // signup submit form
- const handleFormSubmit = async (event) => {
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // try/catch instead of promises to handle errors
+
     try {
-      const { data } = await addUser({
+      const { data } = await login({
         variables: { ...formState },
       });
 
-      console.login(data.addUser.token);
+      console.login(data);
     } catch (e) {
       console.error(e);
     }
-  };
 
+    // clear form values
+    setFormState({
+        email: "",
+        password: "",
+      });
+    };
 
     return (
     <section>
-        
         <h2 className="login-h2">Login/Create an Account</h2>
-
         <div className="container login__container">
-        <form className="form">
-            <div className="form-group">
-                <h3>Create an Account:</h3>
-                <div>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text"></input>
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text"></input>
-                </div>
-                <div>
-                    <label htmlFor="zip">Address (Street & City):</label>
-                    <input type="text"></input>
-                </div>
-    
-                <div>
-                    <label htmlFor="zip">Zip code:</label>
-                    <input type="text"></input>
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="text"></input>
-                </div>
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-        {error && <div>Sign up failed</div>}
 
-
-        <form className="form">
+        <form onSubmit={handleFormSubmit} className="form">
             <div className="form-group">
                 <h3>Sign into your Account:</h3>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="text"></input>
+                    <input
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    id="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="text"></input>
+                    <input 
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    id="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
                 </div>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+        {error && <div>Login failed</div>}
+
+        <Login />
+
         </div>
     </section>
 )
-}
+};
 
 export default Login;
