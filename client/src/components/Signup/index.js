@@ -31,6 +31,7 @@ const [formState, setFormState] = useState({
     event.preventDefault();
     // try/catch instead of promises to handle errors
     try {
+      console.log(formState);
       const { data } = await addUser({
         variables: { ...formState },
       });
