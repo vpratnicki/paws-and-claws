@@ -1,13 +1,30 @@
 import React from "react";
+import Auth from '../../utils/auth';
 import { Link } from "react-router-dom";
 
 
 function Nav({ currentPage, handlePageChange }) {
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
     return (
         <header>
             <h1>Paws & Claws</h1>
             <nav>
                 <ul>
+                {Auth.loggedIn() ? (
+                    <>
+                <li>
+                    <Link herf="#dashboard"
+                          to="/dashboard"
+                          onClick={() => handlePageChange("Dashboard")}
+                          className={currentPage === "Dashboard" ? "navActive" : "nav-link"} >
+                    Dashboard</Link></li>
+                <li><a href="/" onClick={logout}>Logout</a></li>
+                    </>
+                ) : (
+                    <>
                 <li> 
                     <Link herf="#about" to="/" 
                           onClick={() => handlePageChange("About")} 
@@ -26,13 +43,8 @@ function Nav({ currentPage, handlePageChange }) {
                           onClick={() => handlePageChange("Login")}
                           className={currentPage === "Login" ? "navActive" : "nav-link"} >
                     Make an Appointment</Link></li>
-                
-                <li>
-                    <Link herf="#dashboard"
-                          to="/dashboard"
-                          onClick={() => handlePageChange("Dashboard")}
-                          className={currentPage === "Dashboard" ? "navActive" : "nav-link"} >
-                    Dashboard</Link></li>
+                    </>
+                )}
                 </ul>
             </nav>
         </header>
