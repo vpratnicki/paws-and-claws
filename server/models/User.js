@@ -58,10 +58,12 @@ const userSchema = new Schema(
                 ref: 'Pet'
             }
         ],
-        appointments: {
-            type: Schema.Types.ObjectId,
-            ref: 'Appointment'
-        }
+        appointments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Appointment'
+            }
+        ]
     },
 );
 

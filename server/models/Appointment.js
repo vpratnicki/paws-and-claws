@@ -4,6 +4,12 @@ const AppointmentSchema = new Schema({
     apptDate: {
         type: Date
     },
+    apptTime: {
+        type: Number
+    },
+    address: {
+        type: String
+    },
     client: {
         type: String
     },
