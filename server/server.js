@@ -1,14 +1,12 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const { PhoneNumberTypeDefinition, PhoneNumberResolver } = require('graphql-scalars')
+const typeDefs = require('./schema/typeDefs');
+const resolvers = require('./schema/resolvers');
 
-
-const { typeDefs, resolvers} = require('./schema');
+// const { typeDefs, resolvers} = require('./schema');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
-
-
 
 
 const PORT = process.env.PORT || 3001;

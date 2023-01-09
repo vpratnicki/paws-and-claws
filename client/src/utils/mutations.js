@@ -38,3 +38,18 @@ export const ADD_USER = gql`
             }
         }
     `;   
+
+    export const ADD_APPOINTMENT = `gql
+    mutation addAppointment($apptDate: Int!, $apptTime: Int!, $service: String!){
+        addAppointment(apptDate: $apptDate, apptTime: $apptTime, service: $service) {
+            _id
+            apptDate
+            apptTime
+            service
+            address
+            client
+            }
+        }
+      }
+    
+    `
