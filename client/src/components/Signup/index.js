@@ -33,7 +33,13 @@ const [formState, setFormState] = useState({
     try {
       console.log(formState);
       const { data } = await addUser({
-        variables: { ...formState },
+        variables: {
+          clientName: formState.username,
+          username: formState.username,
+          email: formState.email, 
+          password: formState.password,
+          homeAddress: formState.homeAddress,
+          zipcode: parseInt(formState.zipcode) },
       });
 
       Auth.login(data.addUser.token);
@@ -42,14 +48,14 @@ const [formState, setFormState] = useState({
     }
 
     // clear form values
-    setFormState({
-      clientName: "",
-      username: "",
-      email: "",
-      homeAddress: "",
-      zipcode: "",
-      password: "",
-    });
+    // setFormState({
+    //   clientName: "",
+    //   username: "",
+    //   email: "",
+    //   homeAddress: "",
+    //   zipcode: "",
+    //   password: "",
+    // });
   };
     return (
     <section>

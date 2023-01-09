@@ -39,9 +39,9 @@ const userResolvers = {
                 console.log(token);
                 return { token, user};
 
-            } catch (err) {
+            } catch (error) {
                 console.log('something failed');
-                console.log(err);
+                console.log(JSON.stringify(error, null, 2));
                 return err;
             }
         },
