@@ -1,0 +1,69 @@
+const { AuthenticationError } = require('apollo-server-express');
+const { User } = require('../../models');
+const { signToken } = require('../../utils/auth');
+
+const userResolvers = {
+    Query: {
+        me: async (parent, args, context) => {
+            if(context.user){
+            const userData = await User.findOne({ _id: context.user._id})
+            .populate('pets')
+            .populate('appointments');
+
+            return userData;
+        }
+
+        throw new AuthenticationError('Not logged in');
+
+        },
+        getAllUsers: async () => {
+            return User.find()
+        },
+
+        getUserByID: async (parent, {_id}) => {
+            return User.findOne({ _id})
+            .populate('pets')
+            .populate('appointments');
+        },
+    },
+    Mutation: {
+        addUser: async (parent, args) => {
+            console.log(args);
+            try {
+                const user = await User.create(args)
+                console.log('----------------');
+                console.log(user);
+
+                const token = signToken(user);
+                console.log('----------------');
+                console.log(token);
+                return { token, user};
+
+            } catch (err) {
+                console.log('something failed');
+                console.log(err);
+                return err;
+            }
+        },
+        login: async(parent, { email, password }) => {
+            const user = await User.findOne({ email });
+          
+
+            if(!user){
+                throw new AuthenticationError('There are no accounts with this email address');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if(!correctPw){
+                throw new AuthenticationError('Incorrect password');
+            }
+
+            const token = signToken(user)
+
+            return {token, user};
+        }
+}
+};
+
+module.exports = userResolvers;
