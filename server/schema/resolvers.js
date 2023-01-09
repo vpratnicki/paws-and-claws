@@ -1,4 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { async } = require('rxjs');
+// const { async } = require('rxjs');
 const { User, Pet, Appointment } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -8,6 +10,7 @@ const resolvers = {
             if(context.user){
             const userData = await User.findOne({ _id: context.user._id})
             .populate('pets')
+            .populate('appointments')
 
             return userData
         }
@@ -93,32 +96,21 @@ const resolvers = {
         
               throw new AuthenticationError('You need to be logged in!');
             },
-        
-        // addUser: async (parent, args) => {
+            addAppointment: async (parent, args, context) => {
+                if (context.user) {
+                    const appt = await Appointment.create({ ...args, client: context.user.clientName, address: context.user.homeAddress });
             
-        //     const user = await User.create(args)
-        //     const token = signToken(user);
-
-        //     return { token, user};
-        // },
-        // login: async(parent, { email, password }) => {
-        //     const user = await User.findOne({ email });
-          
-
-        //     if(!user){
-        //         throw new AuthenticationError('There are no accounts with this email address');
-        //     }
-
-        //     const correctPw = await user.isCorrectPassword(password);
-
-        //     if(!correctPw){
-        //         throw new AuthenticationError('Incorrect password');
-        //     }
-
-        //     const token = signToken(user)
-
-        //     return {token, user};
-        // }
+                    await User.findByIdAndUpdate(
+                      { _id: context.user._id },
+                      { $push: { appointments: appt._id } },
+                      { new: true }
+                    );
+            
+                    return appt;
+                  }
+            
+                  throw new AuthenticationError('You need to be logged in!');
+                }
     }
 }
 

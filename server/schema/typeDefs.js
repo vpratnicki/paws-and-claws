@@ -16,24 +16,28 @@ type User {
     clientName: String
     username: String
     email: String
+    phoneNumber: Int
     password: String
     homeAddress: String
     zipcode: Int
     pets: [Pet]
+    appointments: [Appointment]
 }
 
 type Appointment {
     _id: ID
     apptDate: Int
-    client: User
-    pet: Pet
+    apptTime: Int
+    address: String
     service: String
+    client: String
 }
 
 type Auth {
     token: ID!
     user: User
 }
+
 type Query {
    me: User 
    getUsers: [User]
@@ -47,7 +51,7 @@ type Query {
 }
 
 type Mutation {
-    addAppointment(apptDate: Int!, service: String!, pet: ID!): Appointment
+    addAppointment(apptDate: Int!, apptTime: Int!, service: String!): Appointment
     addUser(username: String!, email: String!, clientName: String!, password: String! homeAddress: String!, zipcode: Int!): Auth
     login(email: String!, password: String!): Auth
     addPet(petName: String!, petType: String!, petAge: Int): Pet
