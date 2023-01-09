@@ -40,8 +40,8 @@ function Nav({ currentPage, handlePageChange }) {
                 <li>
                     <Link herf="#make-an-appointment"
                           to="/make-an-appointment"
-                          onClick={() => handlePageChange("Login")}
-                          className={currentPage === "Login" ? "navActive" : "nav-link"} >
+                          onClick={() => handlePageChange("MakeAppointment")}
+                          className={currentPage === "MakeAppointment" ? "navActive" : "nav-link"} >
                     Make an Appointment</Link></li>
                     </>
                 )}
