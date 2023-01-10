@@ -29,17 +29,46 @@ export const ADD_USER = gql`
         }
     }`;
 
+//USER UPDATES    
+export const EDIT_EMAIL = gql`
+mutation updateEmail($email: String){
+    updateEmail(email: $email){
+      _id
+      username
+      email
+    }
+  }`;
+
+  export const EDIT_PHONE = gql`
+mutation updatePhone($phoneNumber: Int){
+    updatePhone(phoneNumber: $phoneNumber){
+      _id
+      username
+      phoneNumber
+    }
+  }`;
+
+
+//PET MUTATIONS
     export const ADD_PET = gql`
         mutation addPet($petName: String!, $petType: String!){
             addPet(petName: $petName, petType: $petType){
                 _id
                 petName
                 petType
-                username
+                client
             }
         }
-    `;   
+    `;
+    export const DELETE_PET = gql `
+    mutation deletePet($_id: ID!){
+        deletePet(_id: $_id){
+          _id
+        }
+      }
+      `;   
 
+//APPOINTMENT MUTATIONS
     export const ADD_APPOINTMENT = gql`
     mutation addAppointment($apptDate: Int!, $apptTime: Int!, $service: String!){
         addAppointment(apptDate: $apptDate, apptTime: $apptTime, service: $service) {
@@ -51,6 +80,11 @@ export const ADD_USER = gql`
             client
             }
         }
-      
-    
     `
+export const DELETE_APPOINTMENT = gql `
+mutation deleteAppointment($_id: ID!){
+    deleteAppointment(_id: $_id){
+      _id
+    }
+  }
+  `;
