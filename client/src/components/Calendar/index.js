@@ -1,109 +1,76 @@
-import React from "react";
-// import "@mobiscroll/react/dist/css/mobiscroll.min.css";
-// import { Datepicker, Page, getJson, setOptions } from "@mobiscroll/react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-// setOptions({
-//     theme: "material",
-//     themeVariant: "dark",
-// });
+import moment from 'moment';
+
 
 function Calendar() {
-  // const min = "2023-01-07T00:00";
-  // const max = "2023-07-07T00:00";
+  const [dateForm, setDateForm] = useState({
+    date: "",
+    time: ""
+  });
 
-  // const [datetimeLabels, setDatetimeLabels] = React.useState([]);
-  // const [datetimeInvalid, setDatetimeInvalid] = React.useState([]);
+  const [date, setDate] = useState(new Date());
 
+  const handleUpdate = (event) => {
+    setDateForm({...dateForm, [event.target.name]: event.target.value});
+  }
 
-
-  // const onPageLoadingDatetime = React.useCallback((event, inst) => {
-  //   getDatetimes(event.firstDay, (bookings) => {
-  //   setDatetimeLabels(bookings.labels);
-  //   setDatetimeInvalid(bookings.invalid);
-  //   });
-  // }, []);
-
-  // const getDatetimes = (d, callback) => {
-  //   let invalid = [];
-  //   let labels = [];
-
-  //   getJson(
-  //     "https://trial.mobiscroll.com/getbookingtime/?year=" +
-  //       d.getFullYear() +
-  //       "&month=" +
-  //       d.getMonth(),
-  //     (bookings) => {
-  //       for (let i = 0; i < bookings.length; ++i) {
-  //         const booking = bookings[i];
-  //         const bDate = new Date(booking.d);
-
-  //         if (booking.nr > 0) {
-  //           labels.push({
-  //             start: bDate,
-  //             title: booking.nr + " SPOTS",
-  //             textColor: "#e1528f",
-  //           });
-  //           invalid = [...invalid, ...booking.invalid];
-  //         } else {
-  //           invalid.push(d);
-  //         }
-  //       }
-  //       callback({ labels: labels, invalid: invalid });
-  //     },
-  //     "jsonp"
-  //   );
-  // };
-
-//   const myLabels = React.useMemo(() => {
-//     return [{
-//         start: '2023-01-06',
-//         textColor: '#e1528f',
-//         title: '2 SPOTS'
-//     }];
-// }, []);
-
-// const myInvalid = React.useMemo(() => {
-//     return [{
-//         start: '2023-01-07T08:00',
-//         end: '2023-01-07T13:00'
-//     }, {
-//         start: '2023-01-07T15:00',
-//         end: '2023-01-07T17:00'
-//     }, {
-//         start: '2023-01-07T19:00',
-//         end: '2023-01-07T20:00'
-//     }];
-// }, []);
-
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(dateForm);
+  }
+  
   return (
+    <section>
+        <h2 className="login-h2">Schedule your Appointment</h2>
+        <div className="container">
+          {/* <>
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            showTimeSelect
+            timeFormat="h:mm a"
+            timeIntervals={30}
+            // timeCaption="time"
+            dateFormat="MMMM d, yyyy h:mm aa"
+          /> */}
+          
+          <form onSubmit={handleSubmit} className="form">
+            <div className="form-group">
+              <label htmlFor="date">Date:</label>
+              <DatePicker
+                selected={date}
+                onChange={(date) => setDate(date)}
+                // timeCaption="time"
+                dateFormat="MMMM d, yyyy"
+              />
+            <label htmlFor="time">Time:</label>
+            <DatePicker
+              selected={date}
+              onChange={(date) => setDate(date)}
+              showTimeSelect
+              timeFormat="h:mm a"
+              timeIntervals={30}
+              timeCaption="time"
+              dateFormat="h:mm aa"
+            />
+            {/* <input type="text"
+            name="time"
+            placeholder="appointment-time"
+            onChange={handleUpdate}
+            value={moment(date).format("h:mm a")}
+            /> */}
+            <input type="submit" value="Submit" />
+            </div>
+          </form>
+          {/* </> */}
 
-    <h2>Calendar</h2>
-    // <Page className="md-calendar-booking">
-    //   <div className="mbsc-form-group">
-    //     <div className="mbsc-form-group-title">Select date & time</div>
-    //     <Datepicker
-    //       display="anchored"
-    //       controls={["calendar", "timegrid"]}
-    //       calendarType="month"
-    //       pages={1}
-    //       calendarScroll="horizontal"
-    //       showWeekNumbers={false}
-    //       showOuterDays={false}
-    //       touchUi={true}
-    //       min={min}
-    //       max={max}
-    //       minTime="08:00"
-    //       maxTime="19:59"
-    //       stepMinute={60}
-    //       width={null}
-    //     //   labels={myLabels}
-    //       invalid={myInvalid}
-    //       onPageLoading={onPageLoadingDatetime}
-    //       cssClass="booking-datetime"
-    //     />
-    //   </div>
-    // </Page>
+
+        </div>
+    </section>
+    
   );
 }
 
