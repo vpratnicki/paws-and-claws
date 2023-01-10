@@ -39,7 +39,7 @@ export const ADD_USER = gql`
         }
     `;   
 
-    export const ADD_APPOINTMENT = `gql
+    export const ADD_APPOINTMENT = gql`
     mutation addAppointment($apptDate: Int!, $apptTime: Int!, $service: String!){
         addAppointment(apptDate: $apptDate, apptTime: $apptTime, service: $service) {
             _id
@@ -53,3 +53,24 @@ export const ADD_USER = gql`
       }
     
     `
+
+      ///!!!NOTE: in order for a successful partial update(e.g. only changing email) ALL of the fields must be in the variable. If you don't want a field changed, either have the value be the current value or leave the field empty (not even parenthesis) so the following is acceptable
+
+    //   {
+    //     "clientName": "Lalala",
+    //     "email": ,
+    //     "username": ,
+    //     "homeAddress": "234 Nowhere Ave",
+    //     "zipcode":
+    //   }
+
+    export const UPDATE_USER = gql`
+    mutation updateUser($clientName: String, $email: String, $homeAddress: String, $zipcode: Int){
+        updateUser(clientName: $clientName, email: $email, homeAddress: $homeAddress, zipcode: $zipcode){
+            _id
+            username
+            email
+            homeAddress,
+            zipcode
+        }
+    }`

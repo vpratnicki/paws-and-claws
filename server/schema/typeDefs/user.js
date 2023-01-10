@@ -18,6 +18,11 @@ const user = gql`
             me: User
             getAllUsers: [User]
             getUserByID(_id: ID!): User
+    }
+    
+    extend type Mutation {
+        updateUser(clientName: String, email: String, username: String, homeAddress: String, zipcode: Int):User
+        updateEmail(email: String): User
     }`
 
     module.exports = user;
