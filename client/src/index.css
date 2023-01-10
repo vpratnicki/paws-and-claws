@@ -68,7 +68,7 @@ h3 {
 
 .container {
   width: var(--container-width-lg);
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 .text-light {
@@ -422,7 +422,7 @@ input {
   margin-bottom: 0.5rem;
 }
 
-/* Make an Appointment Styles */
+/* Make an Appointment / Dashboard Styles  */
 .login-h2 {
   margin-top: 1.2rem;
 }
@@ -433,23 +433,9 @@ input {
   gap: 2rem;
 }
 
-/* Calendar Styles */
-.md-calendar-booking .mbsc-calendar-text {
-  text-align: right;
-}
-
-.md-calendar-booking .booking-datetime .mbsc-datepicker-tab-calendar {
-  flex: 1 1 0;
-  min-width: 200px;
-}
-
-.md-calendar-booking .mbsc-timegrid-item {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-.md-calendar-booking .mbsc-timegrid-container {
-  top: 30px;
+hr {
+  border: 1px solid var(--color-primary-variant);
+  margin: 0.5rem 0 1rem;
 }
 
 /* Footer Styles */
