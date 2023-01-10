@@ -6,7 +6,7 @@ const pet = gql`
         petName: String
         petType: String
         petAge: Int
-        userName: String
+        client: String
     }
 
     extend type Query {
@@ -15,7 +15,8 @@ const pet = gql`
     }
 
     extend type Mutation {
-        addPet(petName: String!, petType: String!, petAge: Int): Pet
+        addPet(petName: String!, petType: String!, petAge: Int):Pet
+        deletePet(_id: ID):Pet
     }
 
 `

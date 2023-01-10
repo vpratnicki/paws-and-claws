@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../../models');
+const { findByIdAndUpdate } = require('../../models/Pet');
 const { signToken } = require('../../utils/auth');
 
 const userResolvers = {
@@ -62,7 +63,22 @@ const userResolvers = {
             const token = signToken(user)
 
             return {token, user};
-        }
+        },
+///UPDATE USERS            
+          updateEmail: async (parent, args, context) => {
+            if (context.user) {
+              return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
+          updatePhone: async (parent, args, context) => {
+            if (context.user) {
+              return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
 }
 };
 

@@ -16,6 +16,7 @@ const appointment = gql`
 
     extend type Mutation {
         addAppointment(apptDate: Int!, apptTime: Int!, service: String!): Appointment
+        deleteAppointment(_id: ID):Appointment
     }
 `;
 
