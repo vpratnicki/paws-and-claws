@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// import { useMutation } from "@apollo/client";
+// import { ADD_APPOINTMENT } from "../../utils/mutations";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,31 +13,39 @@ function Calendar() {
     time: ""
   });
 
+  // cost [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
+
   const [date, setDate] = useState(new Date());
 
-  const handleUpdate = (event) => {
-    setDateForm({...dateForm, [event.target.name]: event.target.value});
-  }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  const handleSubmit = (event) => {
+    setDateForm({
+      ...dateForm, 
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(dateForm);
-  }
-  
+
+    try {
+      console.log(dateForm);
+      const { data } = await addAppointment({
+        variables: {
+          date: dateForm.date,
+          time: dateForm.time
+        },
+      });
+      console.log('Here is the appointment data =' + data);
+    } catch (e) {
+      console.error(e);
+      }
+    };
   return (
     <section>
         <h2 className="login-h2">Schedule your Appointment</h2>
         <div className="container">
-          {/* <>
-          <DatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-            showTimeSelect
-            timeFormat="h:mm a"
-            timeIntervals={30}
-            // timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm aa"
-          /> */}
           
           <form onSubmit={handleSubmit} className="form">
             <div className="form-group">

@@ -28,7 +28,7 @@ const [formState, setFormState] = useState({
  // signup submit form
  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // try/catch instead of promises to handle errors
+
     try {
       console.log(formState);
       const { data } = await addUser({
