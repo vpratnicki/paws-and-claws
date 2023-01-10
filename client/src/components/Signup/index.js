@@ -7,7 +7,8 @@ const Signup = () => {
 const [formState, setFormState] = useState({
     clientName: "",
     username: "",
-    email: "", 
+    email: "",
+    phoneNumber: "", 
     password: "",
     homeAddress: "",
     zipcode: "",
@@ -36,6 +37,7 @@ const [formState, setFormState] = useState({
           clientName: formState.username,
           username: formState.username,
           email: formState.email, 
+          phoneNumber: parseInt(formState.phoneNumber),
           password: formState.password,
           homeAddress: formState.homeAddress,
           zipcode: parseInt(formState.zipcode) },

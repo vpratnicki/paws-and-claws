@@ -9,7 +9,7 @@ const auth = gql `
     extend type Mutation {
         login(email: String!, password: String!): Auth
         
-        addUser(username: String!, email: String!, clientName: String!, password: String! homeAddress: String!, zipcode: Int!): Auth
+        addUser(username: String!, email: String!, phoneNumber: Int, clientName: String!, password: String! homeAddress: String!, zipcode: Int!): Auth
     }
     `
 
