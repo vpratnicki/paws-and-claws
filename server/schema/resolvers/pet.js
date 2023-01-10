@@ -14,7 +14,7 @@ const petResolvers = {
     Mutation: {
         addPet: async (parent, args, context) => {
             if (context.user) {
-                const pet = await Pet.create({ ...args, username: context.user.username });
+                const pet = await Pet.create({ ...args, client: context.user.clientName });
         
                 await User.findByIdAndUpdate(
                   { _id: context.user._id },
@@ -27,6 +27,17 @@ const petResolvers = {
         
               throw new AuthenticationError('You need to be logged in!');
             },
+        deletePet: async(parent, {_id}, context) => {
+             const pet = await Pet.findById(_id)
+    
+            if(context.user){
+                if(context.user.clientName == pet.client){
+                    const deleteIt = await Pet.deleteOne({_id})
+     
+                    return deleteIt
+                }
+             }
+     }
     }
 };
 
