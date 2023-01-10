@@ -64,14 +64,15 @@ const userResolvers = {
 
             return {token, user};
         },
-        updateUser: async (parent, args, context) => {
+///UPDATE USERS            
+          updateEmail: async (parent, args, context) => {
             if (context.user) {
               return await User.findByIdAndUpdate(context.user._id, args, { new: true });
             }
       
             throw new AuthenticationError('Not logged in');
           },
-          updateEmail: async (parent, args, context) => {
+          updatePhone: async (parent, args, context) => {
             if (context.user) {
               return await User.findByIdAndUpdate(context.user._id, args, { new: true });
             }
