@@ -18,12 +18,23 @@ const appointmentResolvers = {
                   { $push: { appointments: appt._id } },
                   { new: true }
                 );
-        
+                
                 return appt;
               }
         
               throw new AuthenticationError('You need to be logged in!');
+            },
+        deleteAppointment: async(parent, {_id}, context) => {
+            const appt = await Appointment.findById(_id)
+
+            if(context.user){
+                if(context.user.clientName === appt.client){
+                    const deleteIt = await Appointment.deleteOne({_id})
+ 
+                    return deleteIt
+                }
             }
+        }
     }
 };
 

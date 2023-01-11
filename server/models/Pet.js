@@ -10,7 +10,7 @@ const PetSchema = new Schema({
         type: String,
         required: true
     },
-    username: {
+    client: {
         type: String,
     },
     age: {

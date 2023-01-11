@@ -1,109 +1,98 @@
-import React from "react";
-// import "@mobiscroll/react/dist/css/mobiscroll.min.css";
-// import { Datepicker, Page, getJson, setOptions } from "@mobiscroll/react";
-
-// setOptions({
-//     theme: "material",
-//     themeVariant: "dark",
-// });
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_APPOINTMENT } from "../../utils/mutations";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { setHours, setMinutes } from "date-fns";
 
 function Calendar() {
-  // const min = "2023-01-07T00:00";
-  // const max = "2023-07-07T00:00";
 
-  // const [datetimeLabels, setDatetimeLabels] = React.useState([]);
-  // const [datetimeInvalid, setDatetimeInvalid] = React.useState([]);
+  const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
 
+  const [date, setDate] = useState(
+    setHours(setMinutes(new Date(), 0), 0)
+  );
+  const [time, setTime] = useState('');
+  const [service, setService] = useState('');
 
+  
+    
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      
+    try {
+      const { data } = await addAppointment({
+        variables: {
+          apptDate: date,
+          apptTime: time,
+          service: service },
+        });
 
-  // const onPageLoadingDatetime = React.useCallback((event, inst) => {
-  //   getDatetimes(event.firstDay, (bookings) => {
-  //   setDatetimeLabels(bookings.labels);
-  //   setDatetimeInvalid(bookings.invalid);
-  //   });
-  // }, []);
+      console.log('Here is the appointment data =' + data);
 
-  // const getDatetimes = (d, callback) => {
-  //   let invalid = [];
-  //   let labels = [];
-
-  //   getJson(
-  //     "https://trial.mobiscroll.com/getbookingtime/?year=" +
-  //       d.getFullYear() +
-  //       "&month=" +
-  //       d.getMonth(),
-  //     (bookings) => {
-  //       for (let i = 0; i < bookings.length; ++i) {
-  //         const booking = bookings[i];
-  //         const bDate = new Date(booking.d);
-
-  //         if (booking.nr > 0) {
-  //           labels.push({
-  //             start: bDate,
-  //             title: booking.nr + " SPOTS",
-  //             textColor: "#e1528f",
-  //           });
-  //           invalid = [...invalid, ...booking.invalid];
-  //         } else {
-  //           invalid.push(d);
-  //         }
-  //       }
-  //       callback({ labels: labels, invalid: invalid });
-  //     },
-  //     "jsonp"
-  //   );
-  // };
-
-//   const myLabels = React.useMemo(() => {
-//     return [{
-//         start: '2023-01-06',
-//         textColor: '#e1528f',
-//         title: '2 SPOTS'
-//     }];
-// }, []);
-
-// const myInvalid = React.useMemo(() => {
-//     return [{
-//         start: '2023-01-07T08:00',
-//         end: '2023-01-07T13:00'
-//     }, {
-//         start: '2023-01-07T15:00',
-//         end: '2023-01-07T17:00'
-//     }, {
-//         start: '2023-01-07T19:00',
-//         end: '2023-01-07T20:00'
-//     }];
-// }, []);
-
+    } catch (error) {
+      console.error(error);
+      }
+    };
 
   return (
+    <section>
+        <h2 className="login-h2">Schedule your Appointment</h2>
+        <div className="container">
+          
+          <form onSubmit={handleSubmit} className="form">
+            <div className="form-group">
+              
+              <label htmlFor="date">Date:</label>
+              <DatePicker
+                selected={date}
+                onChange={(date) => {
+                  console.log('user selected:', date)
+                  setDate(date)}}
+                dateFormat="MMMM d, yyyy"
+              />
+            <label htmlFor="time">Time:</label>
+            <DatePicker
+            placeholderText="Select a time"
+              selected={date}
+              onChange={(time) => {
+                console.log('user selected:', time)
+                setTime(time)
+              }}
+                showTimeSelect
+                showTimeSelectOnly
+                includeTimes={[
+                  setHours(setMinutes(new Date(), 0), 8),
+                  setHours(setMinutes(new Date(), 30), 9),
+                  setHours(setMinutes(new Date(), 30), 11),
+                  setHours(setMinutes(new Date(), 30), 13),
+                  setHours(setMinutes(new Date(), 0), 17),
+                  setHours(setMinutes(new Date(), 30), 18),
+                  setHours(setMinutes(new Date(), 30), 19),
+                  setHours(setMinutes(new Date(), 30), 17),
+                ]}
+                dateFormat="h:mm aa"
 
-    <h2>Calendar</h2>
-    // <Page className="md-calendar-booking">
-    //   <div className="mbsc-form-group">
-    //     <div className="mbsc-form-group-title">Select date & time</div>
-    //     <Datepicker
-    //       display="anchored"
-    //       controls={["calendar", "timegrid"]}
-    //       calendarType="month"
-    //       pages={1}
-    //       calendarScroll="horizontal"
-    //       showWeekNumbers={false}
-    //       showOuterDays={false}
-    //       touchUi={true}
-    //       min={min}
-    //       max={max}
-    //       minTime="08:00"
-    //       maxTime="19:59"
-    //       stepMinute={60}
-    //       width={null}
-    //     //   labels={myLabels}
-    //       invalid={myInvalid}
-    //       onPageLoading={onPageLoadingDatetime}
-    //       cssClass="booking-datetime"
-    //     />
-    //   </div>
-    // </Page>
+              />
+            <label htmlFor="service">Service:</label>
+                <select 
+                onChange={(service) => { 
+                  console.log('user selected:', service.target.value);
+                  setService(service.target.value);
+                }} 
+                name="service">
+                    <option value="placeholder"> Select a service </option>
+                    <option value="Nail Trimmed"> Nail Trimmed </option>
+                    <option value="Paw Pads Trimmed"> Paw Pads Trimmed </option>
+                    <option value="Feet Tidied"> Feet Tidied </option>
+                </select>
+
+            <input type="submit" className="btn btn-primary" value="Submit" />
+            </div>
+          </form>
+        </div>
+    </section>
+    
   );
 }
 
