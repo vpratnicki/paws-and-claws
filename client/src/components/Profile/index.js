@@ -11,7 +11,6 @@ function Profile() {
 
   return (
 
-      <div className="container services__container-1col">
         <article className="service">
         <div className="service__head">
             <h3>Profile</h3>
@@ -30,7 +29,6 @@ function Profile() {
             <li>Zip: {data.me.zipcode}</li>
             </ul>
         </article>
-    </div>
     );
 }
 
