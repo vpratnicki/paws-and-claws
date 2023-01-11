@@ -337,6 +337,7 @@ header a:hover {
   border: 1px solid var(--color-primary);
   height: fit-content;
   transition: var(--transition);
+  margin-bottom: 1rem;
 }
 
 .service:hover {
