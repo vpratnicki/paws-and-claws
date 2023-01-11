@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { useMutation } from "@apollo/client";
-// import { ADD_APPOINTMENT } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { ADD_APPOINTMENT } from "../../utils/mutations";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,35 +8,42 @@ import moment from 'moment';
 
 
 function Calendar() {
-  const [dateForm, setDateForm] = useState({
-    date: "",
-    time: ""
+  const [formState, setFormState ] = useState({
+    apptDate: "",
+    apptTime: "",
+    service: "",
   });
 
-  // cost [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
+  const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [service, setService] = useState('');
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
 
-    setDateForm({
-      ...dateForm, 
-      [event.target.name]: event.target.value
-    });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  //   setFormState({
+  //     ...formState, 
+  //     [name]: value,
+  //   });
+  // };
+    
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      
     try {
-      console.log(dateForm);
+      // nothing is in formstate
+      console.log();
+      // we put everything in individual state variables
+      console.log(date, time, service.target.value);
       const { data } = await addAppointment({
         variables: {
-          date: dateForm.date,
-          time: dateForm.time
-        },
-      });
+          apptDate: parseInt(date),
+          apptTime: parseInt(time),
+          service: service.target.value },
+        });
+
       console.log('Here is the appointment data =' + data);
     } catch (e) {
       console.error(e);
@@ -52,26 +59,38 @@ function Calendar() {
               <label htmlFor="date">Date:</label>
               <DatePicker
                 selected={date}
-                onChange={(date) => setDate(date)}
-                // timeCaption="time"
+                onChange={(date) => {
+                  console.log('user selected:', date)
+                  setDate(date)}}
                 dateFormat="MMMM d, yyyy"
               />
             <label htmlFor="time">Time:</label>
             <DatePicker
               selected={date}
-              onChange={(date) => setDate(date)}
+              onChange={(time) => {
+                console.log('user selected:', time)
+                setTime(time)
+              }}
               showTimeSelect
+              dateFormat="MMMM d, yyyy"
               timeFormat="h:mm a"
               timeIntervals={30}
               timeCaption="time"
-              dateFormat="h:mm aa"
             />
-            {/* <input type="text"
-            name="time"
-            placeholder="appointment-time"
-            onChange={handleUpdate}
-            value={moment(date).format("h:mm a")}
-            /> */}
+
+            <label htmlFor="service">Service:</label>
+                <select 
+                // value={formState.service} 
+                onChange={(service) => { 
+                  console.log('user selected:', service.target.value);
+                  setService(service.target.value);
+                }} 
+                name="service">
+                    <option value="Nail Trimmed"> Nail Trimmed </option>
+                    <option value="Paw Pads Trimmed"> Paw Pads Trimmed </option>
+                    <option value="Feet Tidied"> Feet Tidied </option>
+                </select>
+
             <input type="submit" value="Submit" />
             </div>
           </form>

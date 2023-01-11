@@ -48,15 +48,6 @@ const [formState, setFormState] = useState({
       console.error(e);
     }
 
-    // clear form values
-    // setFormState({
-    //   clientName: "",
-    //   username: "",
-    //   email: "",
-    //   homeAddress: "",
-    //   zipcode: "",
-    //   password: "",
-    // });
   };
     return (
     <section>
