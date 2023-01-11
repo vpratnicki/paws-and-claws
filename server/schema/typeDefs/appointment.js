@@ -3,8 +3,8 @@ const { gql } = require('apollo-server-express');
 const appointment = gql`
     type Appointment {
         _id: ID
-        apptDate: Int
-        apptTime: Int
+        apptDate: String
+        apptTime: String
         address: String
         service: String
         client: String
@@ -15,7 +15,7 @@ const appointment = gql`
     }
 
     extend type Mutation {
-        addAppointment(apptDate: Int!, apptTime: Int!, service: String!): Appointment
+        addAppointment(apptDate: String!, apptTime: String!, service: String!): Appointment
         deleteAppointment(_id: ID):Appointment
     }
 `;

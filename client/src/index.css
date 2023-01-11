@@ -422,6 +422,16 @@ input {
   margin-bottom: 0.5rem;
 }
 
+select {
+  background: var(--color-bg-variant);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary-variant);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
 /* Make an Appointment Styles */
 .login-h2 {
   margin-top: 1.2rem;

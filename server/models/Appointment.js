@@ -5,7 +5,7 @@ const AppointmentSchema = new Schema({
         type: Date
     },
     apptTime: {
-        type: Number
+        type: String
     },
     address: {
         type: String

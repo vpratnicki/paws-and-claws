@@ -18,8 +18,7 @@ const appointmentResolvers = {
                   { $push: { appointments: appt._id } },
                   { new: true }
                 );
-                console.log(JSON.stringify(error, null, 2));
-
+                
                 return appt;
               }
         
