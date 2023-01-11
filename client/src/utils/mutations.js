@@ -70,7 +70,7 @@ mutation updatePhone($phoneNumber: Int){
 
 //APPOINTMENT MUTATIONS
     export const ADD_APPOINTMENT = gql`
-    mutation addAppointment($apptDate: Int!, $apptTime: Int!, $service: String!){
+    mutation addAppointment($apptDate: String!, $apptTime: String!, $service: String!){
         addAppointment(apptDate: $apptDate, apptTime: $apptTime, service: $service) {
             _id
             apptDate

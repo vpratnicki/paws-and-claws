@@ -29,7 +29,7 @@ const [formState, setFormState] = useState({
  // signup submit form
  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // try/catch instead of promises to handle errors
+
     try {
       console.log(formState);
       const { data } = await addUser({
@@ -48,15 +48,6 @@ const [formState, setFormState] = useState({
       console.error(e);
     }
 
-    // clear form values
-    // setFormState({
-    //   clientName: "",
-    //   username: "",
-    //   email: "",
-    //   homeAddress: "",
-    //   zipcode: "",
-    //   password: "",
-    // });
   };
     return (
     <section>
