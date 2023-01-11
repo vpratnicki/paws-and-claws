@@ -3,37 +3,24 @@ import { useMutation } from "@apollo/client";
 import { ADD_APPOINTMENT } from "../../utils/mutations";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { setHours, setMinutes } from "date-fns";
 
 function Calendar() {
-  // const [formState, setFormState ] = useState({
-  //   apptDate: "",
-  //   apptTime: "",
-  //   service: "",
-  // });
 
   const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
 
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(
+    setHours(setMinutes(new Date(), 0), 0)
+  );
   const [time, setTime] = useState('');
   const [service, setService] = useState('');
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setFormState({
-  //     ...formState, 
-  //     [name]: value,
-  //   });
-  // };
+  
     
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
       event.preventDefault();
       
     try {
-      // nothing is in formstate
-
-      // we put everything in individual state variables
       const { data } = await addAppointment({
         variables: {
           apptDate: date,
@@ -47,6 +34,7 @@ function Calendar() {
       console.error(error);
       }
     };
+
   return (
     <section>
         <h2 className="login-h2">Schedule your Appointment</h2>
@@ -65,18 +53,27 @@ function Calendar() {
               />
             <label htmlFor="time">Time:</label>
             <DatePicker
+            placeholderText="Select a time"
               selected={date}
               onChange={(time) => {
                 console.log('user selected:', time)
                 setTime(time)
               }}
-              showTimeSelect
-              dateFormat="MMMM d, yyyy"
-              timeFormat="h:mm a"
-              timeIntervals={30}
-              timeCaption="time"
-            />
+                showTimeSelect
+                showTimeSelectOnly
+                includeTimes={[
+                  setHours(setMinutes(new Date(), 0), 8),
+                  setHours(setMinutes(new Date(), 30), 9),
+                  setHours(setMinutes(new Date(), 30), 11),
+                  setHours(setMinutes(new Date(), 30), 13),
+                  setHours(setMinutes(new Date(), 0), 17),
+                  setHours(setMinutes(new Date(), 30), 18),
+                  setHours(setMinutes(new Date(), 30), 19),
+                  setHours(setMinutes(new Date(), 30), 17),
+                ]}
+                dateFormat="h:mm aa"
 
+              />
             <label htmlFor="service">Service:</label>
                 <select 
                 onChange={(service) => { 
@@ -84,17 +81,15 @@ function Calendar() {
                   setService(service.target.value);
                 }} 
                 name="service">
+                    <option value="placeholder"> Select a service </option>
                     <option value="Nail Trimmed"> Nail Trimmed </option>
                     <option value="Paw Pads Trimmed"> Paw Pads Trimmed </option>
                     <option value="Feet Tidied"> Feet Tidied </option>
                 </select>
 
-            <input type="submit" value="Submit" />
+            <input type="submit" className="btn btn-primary" value="Submit" />
             </div>
           </form>
-          {/* </> */}
-
-
         </div>
     </section>
     
