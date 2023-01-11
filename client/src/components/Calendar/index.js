@@ -4,15 +4,13 @@ import { ADD_APPOINTMENT } from "../../utils/mutations";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import moment from 'moment';
-
 
 function Calendar() {
-  const [formState, setFormState ] = useState({
-    apptDate: "",
-    apptTime: "",
-    service: "",
-  });
+  // const [formState, setFormState ] = useState({
+  //   apptDate: "",
+  //   apptTime: "",
+  //   service: "",
+  // });
 
   const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
 
@@ -34,19 +32,19 @@ function Calendar() {
       
     try {
       // nothing is in formstate
-      console.log();
+
       // we put everything in individual state variables
-      console.log(date, time, service.target.value);
       const { data } = await addAppointment({
         variables: {
-          apptDate: parseInt(date),
-          apptTime: parseInt(time),
-          service: service.target.value },
+          apptDate: date,
+          apptTime: time,
+          service: service },
         });
 
       console.log('Here is the appointment data =' + data);
-    } catch (e) {
-      console.error(e);
+
+    } catch (error) {
+      console.error(error);
       }
     };
   return (
@@ -56,6 +54,7 @@ function Calendar() {
           
           <form onSubmit={handleSubmit} className="form">
             <div className="form-group">
+              
               <label htmlFor="date">Date:</label>
               <DatePicker
                 selected={date}
@@ -80,7 +79,6 @@ function Calendar() {
 
             <label htmlFor="service">Service:</label>
                 <select 
-                // value={formState.service} 
                 onChange={(service) => { 
                   console.log('user selected:', service.target.value);
                   setService(service.target.value);
