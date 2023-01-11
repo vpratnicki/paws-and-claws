@@ -1,10 +1,14 @@
 import React from "react";
+import Profile from "../Profile";
 import Calendar from "../Calendar";
 
 function Dashboard() {
+  
+
   return (
-    <div>
-        <h2 className="login-h2">Profile</h2>
+    <div className="container services__container-2col">
+        <Profile />
+
         <h2 className="login-h2">Pets</h2>
 
         <Calendar />
