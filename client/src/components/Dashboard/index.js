@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Profile from "../Profile";
+import Addpet from "./addpet";
+import Viewpets from "./view-pets";
 import Viewappointments from "./View-appointments";
 import Calendar from "../Calendar";
 
@@ -7,17 +9,27 @@ import Calendar from "../Calendar";
 function Dashboard() {
 
   return (
+    <div>
+    
     <div className="container services__container-2col">
-
         <Profile />
-
-        <h2 className="login-h2">Pets</h2>
+        <Viewpets />
+    </div>
+    
+    <>
+    <div className="container services__container-2col">
+        <Addpet />
         <Calendar />
-        <Viewappointments />
+    </div>
+    </>
 
+    
+    <div className="container services__container-2col">
+        <Viewappointments />
+    </div>
     </div>
     
   );
-}
+};
 
 export default Dashboard;
