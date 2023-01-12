@@ -28,6 +28,8 @@ function Calendar() {
           service: service },
         });
 
+        window.location.reload();
+
       console.log('Here is the appointment data =' + data);
 
     } catch (error) {
