@@ -36,7 +36,7 @@ function About({ currentPage, handlePageChange }) {
           <p>
           Schedule a mobile nail trimming appointment today! Your pet (and your furniture) will thank you. </p>
 
-          <Link herf="#service" 
+          <Link href="#service" 
                 to="/services" 
                 onClick={() => handlePageChange("Services")} 
                 className="btn">Services</Link>

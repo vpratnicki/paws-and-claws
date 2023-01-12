@@ -10,13 +10,13 @@ function Nav({ currentPage, handlePageChange }) {
     };
     return (
         <header>
-            <h1>Paws & Claws</h1>
+            <a href='/'><h1>Paws & Claws</h1></a>
             <nav>
                 <ul>
                 {Auth.loggedIn() ? (
                     <>
                 <li>
-                    <Link herf="#dashboard"
+                    <Link href="#dashboard"
                           to="/dashboard"
                           onClick={() => handlePageChange("Dashboard")}
                           className={currentPage === "Dashboard" ? "navActive" : "nav-link"} >
@@ -26,19 +26,19 @@ function Nav({ currentPage, handlePageChange }) {
                 ) : (
                     <>
                 <li> 
-                    <Link herf="#about" to="/" 
+                    <Link href="#about" to="/" 
                           onClick={() => handlePageChange("About")} 
                           className={currentPage === "About" ? "navActive" : "nav-link"} >
                      About</Link> </li>
                 <li>
-                    <Link herf="#services" 
+                    <Link href="#services" 
                           to="/services" 
                           onClick={() => handlePageChange("Services")} 
                           className={currentPage === "Services" ? "navActive" : "nav-link"} >
                     Services/Locations</Link>
                 </li>
                 <li>
-                    <Link herf="#make-an-appointment"
+                    <Link href="#make-an-appointment"
                           to="/make-an-appointment"
                           onClick={() => handlePageChange("MakeAppointment")}
                           className={currentPage === "MakeAppointment" ? "navActive" : "nav-link"} >
