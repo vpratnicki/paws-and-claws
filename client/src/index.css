@@ -578,6 +578,38 @@ footer ul li {
 
 /* ================ MEDIA QUERIES (SMALL DEVICES) ================= */
 @media screen and (max-width: 600px) {
+
+  header {
+    width: 100%;
+    height: 20vh;
+    padding: 0px 0px;
+    background-color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    /* top: 0;
+    position: -webkit-sticky;
+    position: sticky; */
+    /* text-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  
+  }
+  
+  nav {
+    margin: 10px 0;
+  }
+  
+  nav ul {
+    align-items: center;
+  }
+  
+  header a {
+    font-size: 3vw;
+  }
+  
+
+  
   .about__me {
     width: 65%;
     margin: 0 auto 3rem;
