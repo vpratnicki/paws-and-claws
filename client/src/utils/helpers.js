@@ -10,3 +10,9 @@ export function validateAddress(zipcode) {
     //    }
     console.log(zipcode)
 };
+
+export function toTimestamp(strDate){
+    var datum = Date.parse(strDate);
+    return datum/1000;
+ };
+

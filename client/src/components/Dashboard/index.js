@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Profile from "../Profile";
 import Viewappointments from "./View-appointments";
 import Calendar from "../Calendar";
 
 
 function Dashboard() {
-  
 
   return (
     <div className="container services__container-2col">
