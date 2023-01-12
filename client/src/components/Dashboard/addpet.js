@@ -1,8 +1,39 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
 import { useMutation } from "@apollo/client";
 import { ADD_PET } from "../../utils/mutations";
 
+// modal styles
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+Modal.setAppElement('#yourAppElement');
+
 const Addpet = () => {
+
+//   let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+//   function afterOpenModal() {
+//     subtitle.style.color = '#f00';
+//   }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const [formState, setFormState] = useState({
     petName: "",
     petType: "",
@@ -45,8 +76,17 @@ const Addpet = () => {
   };
 
   return (
-    <section>
-      <h2 className="login-h2">Pets</h2>
+    <div>
+      <h2>Pets</h2>
+        <button onClick={openModal}>Add Pet</button>
+        <Modal
+            isOpen={modalIsOpen}
+            // onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+        >
+            
       <form onSubmit={handleFormSubmit} className="form">
         <div className="form-group">
           <h3>Add a Pet:</h3>
@@ -71,8 +111,9 @@ const Addpet = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {error && <div>Sign up failed</div>}
-    </section>
+      {error && <div>Pet add failed</div>}
+      </Modal>
+    </div>
   );
 };
 
