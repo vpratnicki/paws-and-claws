@@ -9,6 +9,10 @@ function Viewappointments() {
 
   if (loading) return <p>Loading...</p>;
   console.log(data.me.appointments);
+  
+  toTimestamp(data.me.appointments.apptTime);
+    console.log(data.me.appointments.apptTime);
+
 
   return (
     <div> 
@@ -18,9 +22,9 @@ function Viewappointments() {
         <article className="service" key={index} >
         
         <ul className='service__list'>
-            <li><strong>Date/Time:</strong> ({item.apptTime})</li>
+            <li><strong>Date/Time:</strong> {item.apptTime}</li>
             <hr/>
-            <li><strong>Date/Time:</strong> ({item.apptDate})</li>
+            <li><strong>Date/Time:</strong> {item.apptDate}</li>
             <hr/>
             <li><strong>Service:</strong> {item.service}</li>
             <hr/>

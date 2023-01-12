@@ -34,6 +34,8 @@ const Addpet = (setIsOpen) => {
         },
       });
 
+      window.location.reload();
+
       console.log("Pet data =" + data);
 
       // clear form values
