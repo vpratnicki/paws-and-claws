@@ -432,7 +432,17 @@ select {
   margin-bottom: 0.5rem;
   width: 100%;
 }
-
+/* temp dashboard styles */
+.edit-button, .edit-div{
+  margin-left: auto;
+  margin-right: 30;
+ }
+ 
+ .service__list li {
+   margin-left: 5%;
+   font-size: 18px;
+ }
+ 
 /* Make an Appointment Styles  */
 .login-h2 {
   margin-top: 1.2rem;
@@ -512,6 +522,8 @@ footer ul li {
   color: var(--color-light);
   margin-right: 3.5rem;
 }
+
+
 
   /* ================ MEDIA QUERIES (MEDIUM DEVICES) ================= */
   @media screen and (max-width: 1024px) {
