@@ -44,6 +44,7 @@ const Addpet = (setIsOpen) => {
     } catch (e) {
       console.error(e);
     }
+    window.location.reload();
   };
 
   return (

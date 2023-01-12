@@ -442,6 +442,22 @@ select {
    margin-left: 5%;
    font-size: 18px;
  }
+
+ .delete-btn {
+  float: right;
+  width: max-content;
+  color: var(--color-primary);
+  font-size: 15px;
+  padding: .75rem 1rem;
+  margin: 0 0.2rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-primary);
+  transition: var(--transition);
+ }
+
+ .delete-div {
+  margin-bottom: 40px;
+ }
  
 /* Make an Appointment Styles  */
 .login-h2 {

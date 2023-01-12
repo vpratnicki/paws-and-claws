@@ -11,6 +11,7 @@ export const QUERY_ME = gql `
       homeAddress
       zipcode
       pets{
+        _id
         petType
         petName
       }
