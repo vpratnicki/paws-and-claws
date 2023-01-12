@@ -49,7 +49,9 @@ function Calendar() {
                 onChange={(date) => {
                   console.log('user selected:', date)
                   setDate(date)}}
-                  formatDay ={
+                showWeekNumbers
+
+                formatDay ={
                     (date) => new Intl.DateTimeFormat(
                       locale, 
                       {
@@ -68,7 +70,6 @@ function Calendar() {
                 setTime(time)
               }}
                 showTimeSelect
-                showTimeSelectOnly
                 includeTimes={[
                   setHours(setMinutes(new Date(), 0), 8),
                   setHours(setMinutes(new Date(), 30), 9),
@@ -79,8 +80,14 @@ function Calendar() {
                   setHours(setMinutes(new Date(), 30), 19),
                   setHours(setMinutes(new Date(), 30), 17),
                 ]}
-                dateFormat="h:mm aa"
-
+                formatDay ={
+                  (date) => new Intl.DateTimeFormat(
+                    locale, 
+                    {
+                      hour: "numeric", 
+                      minute: "2-digit", 
+                    }).format(date)
+                  }
               />
             <label htmlFor="service">Service:</label>
                 <select 

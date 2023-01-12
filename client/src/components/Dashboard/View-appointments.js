@@ -24,8 +24,6 @@ function Viewappointments() {
         <ul className='service__list'>
             <li><strong>Date/Time:</strong> {item.apptTime}</li>
             <hr/>
-            <li><strong>Date/Time:</strong> {item.apptDate}</li>
-            <hr/>
             <li><strong>Service:</strong> {item.service}</li>
             <hr/>
             
