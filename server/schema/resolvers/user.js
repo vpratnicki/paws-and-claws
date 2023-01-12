@@ -79,6 +79,12 @@ const userResolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
+          updateAddress: async (parent, args, context) => {
+            if(context.user){
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true});
+            }
+            throw new AuthenticationError('Not logged in')
+          }
 }
 };
 

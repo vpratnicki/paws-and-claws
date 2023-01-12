@@ -48,6 +48,15 @@ mutation updatePhone($phoneNumber: Int){
     }
   }`;
 
+  export const UPDATE_ADDRESS = gql`
+  mutation updateAddress($homeAddress: String, $zipcode: Int){
+    updateAddress(homeAddress: $homeAddress, zipcode: $zipcode){
+        homeAddress
+        zipcode
+    }
+  }
+  `
+
 
 //PET MUTATIONS
     export const ADD_PET = gql`

@@ -2,10 +2,12 @@ import {React, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import EmailModal from '../Modals/EmailModal';
+import AddressModal from "../Modals/AddressModal";
 
 
 function Profile() {
-  const [isEmailModalOpen, setState] = useState(false);
+  const [isEmailModalOpen, setEmailState] = useState(false);
+  const[isAddressModalOpen, setAddressState]= useState(false);
   const { loading, data } = useQuery(QUERY_ME);
   if (loading) return <p>Loading...</p>;
 //   console.log(data);
@@ -15,9 +17,18 @@ function Profile() {
 const toggleEditEmail = () => {
   console.log('click')
   if(!isEmailModalOpen){
-    setState(true);
+    setEmailState(true);
   } else {
-    setState(false);
+    setEmailState(false);
+  }
+};
+
+const toggleEditAddress = () => {
+  console.log('click')
+  if(!isAddressModalOpen){
+    setAddressState(true);
+  } else {
+    setAddressState(false);
   }
 }
 
@@ -46,9 +57,18 @@ const toggleEditEmail = () => {
             <hr/>
             <li>Phone number: {data.me.phoneNumber}</li>
             <hr/>
-            <li>Address: {data.me.homeAddress}</li>
-            <hr/>
-            <li>Zip: {data.me.zipcode}</li>
+            {isAddressModalOpen && <AddressModal
+                  currentHomeAddress= {data.me.homeAddress}
+                  currentZipcode= {data.me.zipcode}
+                  onClose= {toggleEditAddress}
+                  />}
+            {!isAddressModalOpen &&
+            <li>Address: {data.me.homeAddress}, {data.me.zipcode}
+            <div className='edit-div'>
+              <a className='edit-address-trigger' onClick={toggleEditAddress}>Update</a>
+              </div>
+            </li>
+            }
             </ul>
         </article>
     );

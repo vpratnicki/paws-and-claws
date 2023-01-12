@@ -1,7 +1,6 @@
 import {React, useState} from 'react';
 import {useMutation } from "@apollo/client";
 import {UPDATE_EMAIL} from '../../utils/mutations';
-import Profile from '../Profile'
 
 const EmailModal= ({currentEmail, onClose}) => {
     const [formState, setFormState] = useState({email: currentEmail});
@@ -48,4 +47,4 @@ const EmailModal= ({currentEmail, onClose}) => {
     )
 };
 
-export default EmailModal
+export default EmailModal;
