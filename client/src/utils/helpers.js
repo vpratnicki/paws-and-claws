@@ -19,7 +19,7 @@ export function toTimestamp(apptTime){
 
 
 // export function ourNewDateFormat(apptDate) {
-//     let datePickerDate = {apptDate};
+//     let datePickerDate = "2023-02-14T22:30:00.000Z";
 //     let timestamp = new Date(datePickerDate).getTime();
 //     let Day = new Date(timestamp).getDate();
 //     let Month = new Date(timestamp).getMonth() + 1;

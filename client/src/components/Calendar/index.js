@@ -17,7 +17,7 @@ function Calendar() {
   const [time, setTime] = useState('');
   const [service, setService] = useState('');
 
-  
+
     
   const handleSubmit = async (event) => {
       event.preventDefault();
@@ -38,6 +38,8 @@ function Calendar() {
       console.error(error);
       }
     };
+
+    
 
   return (
           <form onSubmit={handleSubmit} className="form">
