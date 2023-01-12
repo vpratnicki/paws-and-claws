@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { setHours, setMinutes } from "date-fns";
 
+
 function Calendar() {
 
   const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
@@ -12,10 +13,11 @@ function Calendar() {
   const [date, setDate] = useState(
     setHours(setMinutes(new Date(), 0), 0)
   );
+  const locale = 'en-US';
   const [time, setTime] = useState('');
   const [service, setService] = useState('');
 
-  
+
     
   const handleSubmit = async (event) => {
       event.preventDefault();
@@ -37,21 +39,29 @@ function Calendar() {
       }
     };
 
+    
+
   return (
-    <section>
-        <h2 className="login-h2">Schedule your Appointment</h2>
-        <div className="container">
-          
           <form onSubmit={handleSubmit} className="form">
             <div className="form-group">
-              
+            <h3>Schedule your Appointment</h3>  
               <label htmlFor="date">Date:</label>
               <DatePicker
                 selected={date}
                 onChange={(date) => {
                   console.log('user selected:', date)
                   setDate(date)}}
-                dateFormat="MMMM d, yyyy"
+                showWeekNumbers
+
+                formatDay ={
+                    (date) => new Intl.DateTimeFormat(
+                      locale, 
+                      {
+                        year: "numeric", 
+                        month: "2-digit", 
+                        day: "2-digit"
+                      }).format(date)
+                    }
               />
             <label htmlFor="time">Time:</label>
             <DatePicker
@@ -62,7 +72,6 @@ function Calendar() {
                 setTime(time)
               }}
                 showTimeSelect
-                showTimeSelectOnly
                 includeTimes={[
                   setHours(setMinutes(new Date(), 0), 8),
                   setHours(setMinutes(new Date(), 30), 9),
@@ -73,8 +82,14 @@ function Calendar() {
                   setHours(setMinutes(new Date(), 30), 19),
                   setHours(setMinutes(new Date(), 30), 17),
                 ]}
-                dateFormat="h:mm aa"
-
+                formatDay ={
+                  (date) => new Intl.DateTimeFormat(
+                    locale, 
+                    {
+                      hour: "numeric", 
+                      minute: "2-digit", 
+                    }).format(date)
+                  }
               />
             <label htmlFor="service">Service:</label>
                 <select 
@@ -92,8 +107,6 @@ function Calendar() {
             <input type="submit" className="btn btn-primary" value="Submit" />
             </div>
           </form>
-        </div>
-    </section>
     
   );
 }

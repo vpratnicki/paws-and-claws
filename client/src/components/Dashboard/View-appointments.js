@@ -9,6 +9,20 @@ function Viewappointments() {
 
   if (loading) return <p>Loading...</p>;
   console.log(data.me.appointments);
+  
+  const datePickerDate = [data.me.appointments[0].apptTime];
+    let timestamp = new Date(datePickerDate).getTime();
+    let Day = new Date(timestamp).getDate();
+    let Month = new Date(timestamp).getMonth() + 1;
+    let Year = new Date(timestamp).getFullYear();
+    let ourNewDateFormat = `${Month}/${Day}/${Year}`;
+    console.log("Timestamp:" +timestamp);
+    console.log("Day" + Day);
+    console.log("Month" + Month);
+    console.log("Year" + Year);
+    console.log("Our New Date Format:" + ourNewDateFormat);
+
+
 
   return (
     <div> 
@@ -18,9 +32,7 @@ function Viewappointments() {
         <article className="service" key={index} >
         
         <ul className='service__list'>
-            <li><strong>Date/Time:</strong> ({item.apptTime})</li>
-            <hr/>
-            <li><strong>Date/Time:</strong> ({item.apptDate})</li>
+            <li><strong>Date/Time:</strong> {item.apptTime}</li>
             <hr/>
             <li><strong>Service:</strong> {item.service}</li>
             <hr/>

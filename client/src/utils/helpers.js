@@ -11,8 +11,35 @@ export function validateAddress(zipcode) {
     console.log(zipcode)
 };
 
-export function toTimestamp(strDate){
-    var datum = Date.parse(strDate);
+export function toTimestamp(apptTime){
+    var datum = Date.parse(apptTime);
     return datum/1000;
  };
+
+
+
+// export function ourNewDateFormat(apptDate) {
+//     let datePickerDate = "2023-02-14T22:30:00.000Z";
+//     let timestamp = new Date(datePickerDate).getTime();
+//     let Day = new Date(timestamp).getDate();
+//     let Month = new Date(timestamp).getMonth() + 1;
+//     let Year = new Date(timestamp).getFullYear();
+//     let ourNewDateFormat = `${Month}/${Day}/${Year}`;
+
+// }
+// let datePickerDate = {apptDate};
+// let timestamp = new Date(datePickerDate).getTime();
+// let Day = new Date(timestamp).getDate();
+// let Month = new Date(timestamp).getMonth() + 1;
+// let Year = new Date(timestamp).getFullYear();
+
+// let ourNewDateFormat = `${Month}/${Day}/${Year}`;
+// // console.log("Timestamp:" +timestamp);
+// // console.log("Day" + Day);
+// // console.log("Month" + Month);
+// // console.log("Year" + Year);
+// console.log("Our New Date Format:" + ourNewDateFormat);
+
+
+
 
