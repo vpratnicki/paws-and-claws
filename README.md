@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Paws and Claws MERN Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+The website, ********.com, offers mobile claw trimming services for pet owners. Customers can easily book an appointment online by selecting their desired date, time, and location. The website also allows users to choose their preferred trimming method (either traditional or guillotine) and provides a list of recommended frequencies for claw trimming based on the type of pet.
 
-In the project directory, you can run:
+In addition to booking appointments, the website also provides helpful resources for pet owners, including tips on how to properly care for their pet's claws and the benefits of regular trimming. There is also a FAQ section that answers common questions about the claw trimming process.
 
-### `npm start`
+The website features a user-friendly design and easy-to-navigate layout, making it simple for customers to find the information they need and book their appointments. Customers can also pay for their appointments online through a secure payment system.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Overall, ********.com is a reliable and convenient option for pet owners looking to have their pet's claws trimmed in a safe and stress-free environment.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+- To utilize the app, users must create an account that includes a username, password and email. Additionally, they must register an address located within the approved service zone of Orlando, FL. Once logged in, users can view their profile, add their pets, and make appointments for available grooming services.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
+- Languages
+    - HTML
+    - CSS
+    - Javascript
+- Packages
+    - Mongoose/MongoDB
+    - Apollo-Server-Express
+    - React
+    - Node.js
+    - GraphQL
+    - jsonwebtoken
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributions
+- Created by Vanessa Pratnicki and Lacy Holleman
